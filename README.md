@@ -4,43 +4,47 @@ Personal practice repo for working through *Learn to Code with Fantasy Football*
 
 ## Environment
 
-- **Python** 3.11.6
-- **Virtual environment** managed with `venv`
-- **Libraries**: pandas, numpy, seaborn, matplotlib, jupyterlab
+- **Python** 3.13, pinned in [`.python-version`](.python-version) — installed automatically by uv
+- **Package & environment manager**: [uv](https://docs.astral.sh/uv/) (replaces `venv` + `pip` + `requirements.txt`)
+- **Dependencies**: declared in [`pyproject.toml`](pyproject.toml), locked in `uv.lock`
+- **Libraries**: pandas, numpy, seaborn, matplotlib, jupyterlab, requests, beautifulsoup4, statsmodels, scikit-learn
+- **Editor**: VS Code — workspace settings and recommended extensions live in [`.vscode/`](.vscode)
 
 ## Setup
 
-Clone the repo and recreate the environment:
+Install uv once (it manages Python itself, so you don't need to install Python separately):
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Then clone and sync — one command creates `.venv/`, installs the pinned Python, and installs every locked dependency:
 
 ```bash
 git clone https://github.com/colemccaulley/ltcwff.git
 cd ltcwff
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+uv sync
 ```
+
+Open the folder in VS Code (`code .`). It will prompt to install the recommended extensions (Python, Jupyter, Ruff) and automatically use `.venv` as the interpreter. When creating a notebook, pick the `.venv` kernel if asked.
 
 ## Daily Workflow
 
+No manual environment activation needed — `uv run` handles it:
+
 ```bash
-cd /Users/colemccaulley/GitHub/ltcwff
-source venv/bin/activate      # activate environment (do this every session)
-jupyter lab                    # open JupyterLab in browser
+cd ltcwff
+code .                        # work in VS Code notebooks/scripts, or:
+uv run jupyter lab            # open JupyterLab in browser
+uv run python script.py       # run any script inside the environment
 ```
 
-To deactivate the environment when done:
+To add a new package (updates `pyproject.toml` and `uv.lock` together):
 
 ```bash
-deactivate
-```
-
-If you install new packages, update the requirements file:
-
-```bash
-pip install <package>
-pip freeze > requirements.txt
-git add requirements.txt
-git commit -m "Add <package> to requirements"
+uv add <package>
+git add pyproject.toml uv.lock
+git commit -m "Add <package>"
 ```
 
 ---

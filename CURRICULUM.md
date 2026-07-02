@@ -23,8 +23,8 @@ The core loop for every chapter:
 
 **Goal:** a working environment and an understanding of the 5-step data analysis framework: *Collect → Store → Load → Manipulate → Analyze*. Each later chapter maps to one of these steps.
 
-- [ ] Clone both repos side by side; create the venv and `pip install -r requirements.txt` (see this repo's README).
-- [ ] Launch JupyterLab; learn cells, kernels, restart-and-run-all.
+- [ ] Clone both repos side by side; run `uv sync` in this repo (see the README for one-time uv install).
+- [ ] Open the repo in VS Code, install the recommended extensions when prompted, and create a notebook using the `.venv` kernel — or launch `uv run jupyter lab` if you prefer the browser. Learn cells, kernels, restart-and-run-all.
 - [ ] Install [Anki](https://apps.ankiweb.net/) and import `anki/00_tooling.apkg` and `anki/01_Intro.apkg`.
 - [ ] Skim `ltcwff-files/data/` — open `player_game_2017_sample.csv` and `adp_2017.csv` in a text editor just to see what raw data looks like.
 
@@ -123,11 +123,7 @@ This is the "Collect" step of the framework, and the first week the README's ori
 
 ## Week 7 — Modeling (Book Ch. 7)
 
-Requires two libraries not yet in `requirements.txt`:
-
-```bash
-pip install statsmodels scikit-learn && pip freeze > requirements.txt
-```
+The two libraries this chapter needs — `statsmodels` and `scikit-learn` — are already declared in `pyproject.toml`, so if you've run `uv sync` you're ready to go.
 
 | Session | File | Topic |
 |---------|------|-------|
