@@ -47,6 +47,8 @@ git commit -m "Add <package> to requirements"
 
 ## Learning Plan
 
+> **See [CURRICULUM.md](CURRICULUM.md) for the full 8-week curriculum**, which maps each week to specific files in [ltcwff-files](https://github.com/colemccaulley/ltcwff-files) and adds the web scraping/API and modeling chapters not covered by the outline below.
+
 ### Part 0 — Prerequisites and Setup
 - [ ] Install and configure VS Code with the Python extension
 - [ ] Get familiar with JupyterLab: creating notebooks, running cells, restarting kernel
